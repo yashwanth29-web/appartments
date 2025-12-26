@@ -1,0 +1,108 @@
+<app-navbar></app-navbar>
+
+<div class="page-container">
+  <!-- Header -->
+  <div class="header">
+    <h2>Discover Your Dream Flat</h2>
+    <p class="subtitle">Premium living spaces curated for you</p>
+  </div>
+
+  <!-- Search Filters -->
+  <div class="search-filters">
+    <input placeholder="Search by flat number..." [(ngModel)]="searchFlat" (input)="filterUnits()">
+    <input placeholder="Search by tower..." [(ngModel)]="searchTower" (input)="filterUnits()">
+    <input type="number" placeholder="Max rent..." [(ngModel)]="maxRent" (input)="filterUnits()">
+  </div>
+
+  <app-loading-spinner [isLoading]="isLoading" message="Loading flats..."></app-loading-spinner>
+
+  <div class="units-grid" *ngIf="!isLoading && filteredUnits.length > 0">
+    <div *ngFor="let u of filteredUnits" class="unit-card">
+      <!-- Image -->
+      <div class="image-wrap">
+        <img [src]="api.getImageUrl(u.image)" alt="Flat Image" class="unit-image" />
+        <span class="rent-badge">₹{{ u.rent }}/mo</span>
+      </div>
+
+      <!-- Card Content -->
+      <div class="card-body">
+        <div class="card-header">
+          <h3>Flat {{ u.flat_number }}</h3>
+          <span class="tower-label" *ngIf="u.tower_name">{{ u.tower_name }}</span>
+          <span
+            class="status"
+            [class.available]="u.status === 'available'"
+            [class.occupied]="u.status !== 'available'"
+          >
+            {{ u.status }}
+          </span>
+        </div>
+
+        <button
+          class="book-btn"
+          (click)="openBookingPopup(u)"
+          [disabled]="u.status !== 'available'"
+        >
+          {{ u.status === 'available' ? 'Book This Flat' : 'Not Available' }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!isLoading && filteredUnits.length === 0 && units.length > 0" class="empty-state">
+    No flats match your search criteria
+  </div>
+  <div *ngIf="!isLoading && units.length === 0" class="empty-state">
+    No flats available at the moment
+  </div>
+
+  <!-- Booking & Payment Popup -->
+  <div class="popup-overlay" *ngIf="showPopup">
+    <div class="popup-card">
+      <button class="close-btn" (click)="closePopup()">×</button>
+      <h3>Complete Your Booking</h3>
+
+      <div class="booking-summary" *ngIf="selectedUnit">
+        <p><strong>Flat:</strong> {{ selectedUnit.flat_number }}</p>
+        <p><strong>Monthly Rent:</strong> ₹{{ selectedUnit.rent }}</p>
+        <p class="deposit-note">Security Deposit: ₹{{ selectedUnit.rent * 2 }} (2 months)</p>
+        <hr />
+        <p class="total"><strong>Total Payable:</strong> ₹{{ selectedUnit.rent * 3 }}</p>
+      </div>
+
+      <div class="payment-form">
+        <h4>Payment Details</h4>
+        <input 
+          type="text" 
+          placeholder="Card Number" 
+          [value]="cardNumber"
+          (input)="formatCardNumber($event)"
+          maxlength="19"
+        />
+        <div class="card-row">
+          <input 
+            type="text" 
+            placeholder="MM/YY" 
+            [value]="cardExpiry"
+            (input)="formatExpiry($event)"
+            maxlength="5"
+          />
+          <input 
+            type="text" 
+            placeholder="CVV" 
+            [(ngModel)]="cardCvv"
+            maxlength="4"
+          />
+        </div>
+      </div>
+
+      <div class="popup-actions">
+        <button class="cancel-btn" (click)="closePopup()" [disabled]="isProcessing">Cancel</button>
+        <button class="pay-btn" (click)="confirmBooking()" [disabled]="isProcessing">
+          {{ isProcessing ? 'Processing...' : 'Pay & Book' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

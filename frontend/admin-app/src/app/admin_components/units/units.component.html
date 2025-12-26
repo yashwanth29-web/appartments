@@ -1,0 +1,68 @@
+
+<app-navbar></app-navbar>
+<div class="page">
+  <h2 class="title">Manage Units</h2>
+
+  <!-- Create/Edit Unit -->
+  <div class="form-card">
+    <h3>{{ editMode ? 'Edit Unit' : 'Add New Unit' }}</h3>
+
+    <div class="form-grid">
+      <input placeholder="Flat Number" [(ngModel)]="flat_number">
+      <input type="number" placeholder="Rent" [(ngModel)]="rent">
+      <select [(ngModel)]="tower_name">
+        <option value="">Select Tower</option>
+        <option *ngFor="let t of towers" [value]="t.name">{{ t.name }}</option>
+      </select>
+      <input placeholder="Image filename" [(ngModel)]="image">
+    </div>
+
+    <div class="form-actions">
+      <button class="primary-btn" (click)="saveUnit()">
+        {{ editMode ? 'Update Unit' : 'Add Unit' }}
+      </button>
+      <button class="cancel-btn" *ngIf="editMode" (click)="cancelEdit()">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Search -->
+  <div class="search-bar">
+    <input placeholder="Search by flat number..." [(ngModel)]="searchFlat" (input)="filterUnits()">
+  </div>
+<hr>
+
+<app-loading-spinner [isLoading]="isLoading" message="Loading units..."></app-loading-spinner>
+
+<!-- Units List -->
+ <div class="units-grid" *ngIf="!isLoading">
+  <div *ngFor="let u of filteredUnits" class="unit-card" [class.editing]="editingUnitId === u.id">
+    
+    <!-- Image -->
+    <div class="image-wrapper">
+      <img [src]="api.getImageUrl(u.image)" alt="Flat Image" class="unit-image" />
+      <span class="price-badge">₹{{ u.rent }}</span>
+    </div>
+
+    <!-- Content -->
+    <div class="unit-content">
+      <h3>Flat {{ u.flat_number }}</h3>
+
+      <div class="meta">
+        <span>Status: <b>{{ u.status }}</b></span>
+        <span>Tower: <b>{{ u.tower_name || 'N/A' }}</b></span>
+      </div>
+
+      <div class="action-buttons">
+        <button class="edit-btn" (click)="editUnit(u)">
+          ✏️ Edit
+        </button>
+        <button class="delete-btn" (click)="deleteUnit(u.id)">
+          🗑 Delete
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div>

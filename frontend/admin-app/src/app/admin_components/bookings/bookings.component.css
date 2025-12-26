@@ -1,0 +1,209 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+
+/* Overall page */
+.page-wrapper {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: radial-gradient(circle at center, #2c1a4d 0%, #1a0d2e 100%);
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M50 0 L100 50 L50 100 L0 50 Z" fill="rgba(255,215,0,0.05)"/></svg>'), 
+                linear-gradient(135deg, #3a1f5c, #1a0d2e);
+  background-size: cover, cover;
+  margin-top: 10px;
+}
+
+.title {
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #ffd700;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
+  height: 5px;
+  background: linear-gradient(90deg, transparent, #ffd700, transparent);
+  border-radius: 3px;
+}
+
+/* Cards wrapper */
+.cards-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 30px;
+  padding: 0 15px;
+}
+
+/* Single Card – Now smaller and with higher border radius */
+.card {
+  position: relative;
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: var(--delay);
+}
+
+.card-frame {
+  background: #2a1b3f;
+  border: 6px solid #ffd700;
+  border-image: linear-gradient(45deg, #ffd700, #ffeb3b, #ffd700) 1;
+  border-radius: 28px; /* Increased border radius for softer, luxurious look */
+  overflow: hidden;
+  box-shadow: 0 15px 45px rgba(0,0,0,0.6), 
+              inset 0 0 30px rgba(255,215,0,0.15);
+  transition: all 0.6s ease;
+}
+
+.card-frame:hover {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.8), 
+              inset 0 0 60px rgba(255,215,0,0.25);
+}
+
+/* Header */
+.card-header {
+  background: linear-gradient(to bottom, #3a1f5c, #2a1b3f);
+  padding: 16px;
+  text-align: center;
+  border-bottom: 2px solid #ffd700;
+}
+
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: #ffd700;
+  text-shadow: 0 2px 8px rgba(255,215,0,0.5);
+}
+
+/* Content – More compact */
+.card-content {
+  padding: 20px 30px;
+  background: rgba(255,255,255,0.05);
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,215,0,0.2);
+}
+
+.label {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  color: #ffd700;
+  font-size: 1.1rem;
+}
+
+.value {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Status */
+.status-row {
+  margin-top: 8px;
+}
+
+.status-badge {
+  padding: 8px 18px;
+  border-radius: 25px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.status-badge.pending {
+  background: #ffeb3b;
+  color: #1a0d2e;
+  box-shadow: 0 0 15px rgba(255,235,59,0.6);
+}
+
+.status-badge.approved {
+  background: #00c853;
+  color: white;
+  box-shadow: 0 0 15px rgba(0,200,83,0.6);
+}
+
+.status-badge.rejected {
+  background: #d81b60;
+  color: white;
+  box-shadow: 0 0 15px rgba(216,27,96,0.6);
+}
+
+/* Buttons – More compact */
+.card-actions {
+  display: flex;
+  gap: 15px;
+  padding: 20px 30px;
+  background: linear-gradient(to top, #2a1b3f, #3a1f5c);
+}
+
+.btn {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Cinzel', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-approve {
+  background: linear-gradient(135deg, #00c853, #009624);
+  color: white;
+  box-shadow: 0 6px 15px rgba(0,200,83,0.5);
+}
+
+.btn-approve:hover {
+  background: linear-gradient(135deg, #009624, #007b1e);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0,200,83,0.7);
+}
+
+.btn-reject {
+  background: linear-gradient(135deg, #d81b60, #b71c1c);
+  color: white;
+  box-shadow: 0 6px 15px rgba(216,27,96,0.5);
+}
+
+.btn-reject:hover {
+  background: linear-gradient(135deg, #b71c1c, #880e0e);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(216,27,96,0.7);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

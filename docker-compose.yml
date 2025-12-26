@@ -1,0 +1,25 @@
+services:
+  # Flask Backend - Using Neon Cloud PostgreSQL
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    environment:
+      - FLASK_APP=run.py
+      - FLASK_ENV=development
+      - DATABASE_URL=postgresql://neondb_owner:npg_g0N7mRDuZfKB@ep-long-tree-adsh5yl5-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require
+      - JWT_SECRET_KEY=your-secret-key-change-in-production
+    ports:
+      - "5001:5000"
+    restart: unless-stopped
+
+  # Admin App (Angular) - Contains both Admin & Resident portals
+  admin-app:
+    build:
+      context: ./frontend/admin-app
+      dockerfile: Dockerfile
+    ports:
+      - "8081:80"
+    depends_on:
+      - backend
+    restart: unless-stopped

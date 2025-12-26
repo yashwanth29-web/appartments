@@ -1,0 +1,58 @@
+<app-navbar></app-navbar>
+
+<div class="lease-page">
+
+  <!-- HERO SECTION -->
+  <section class="lease-hero">
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <!-- Header -->
+      <div class="page-header">
+        <h1>Lease Management</h1>
+        <p>Assign tenants to flats and manage active lease records</p>
+      </div>
+
+      <!-- Assign Lease -->
+      <div class="assign-card glass">
+        <h2>Assign Tenant to Flat</h2>
+
+        <div class="input-row">
+          <input type="number" placeholder="Booking ID" [(ngModel)]="form.Booking_id" />
+          <input type="text" placeholder="Flat Number" [(ngModel)]="form.flat_number" />
+          <input type="text" placeholder="Tenant Name" [(ngModel)]="form.user_name" />
+        </div>
+
+        <button class="assign-btn" (click)="createLease()">
+          Assign Lease
+        </button>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ACTIVE LEASES (NORMAL BACKGROUND) -->
+  <h2 class="section-title">Active Leases</h2>
+
+  <app-loading-spinner [isLoading]="isLoading" message="Loading leases..."></app-loading-spinner>
+
+  <div class="leases-grid" *ngIf="!isLoading">
+    <div class="lease-card premium" *ngFor="let l of leases">
+      <span class="status-badge">ACTIVE</span>
+
+      <h3 class="tenant-name">{{ l.user_name }}</h3>
+
+      <div class="lease-info">
+        <p><span>Flat</span><em>{{ l.flat_number || 'N/A' }}</em></p>
+        <p><span>Tower</span><em>{{ l.tower_name || 'N/A' }}</em></p>
+        <p><span>Rent</span><em>₹{{ l.rent || 0 }}</em></p>
+        <p><span>Start Date</span><em>{{ l.start_date | date }}</em></p>
+      </div>
+
+      <button class="end-btn" (click)="deleteLease(l.id)">End Lease</button>
+      <div class="shine"></div>
+    </div>
+  </div>
+
+</div>

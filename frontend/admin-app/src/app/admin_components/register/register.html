@@ -1,0 +1,28 @@
+
+<div class="register-container">
+  <div class="form-wrapper">
+    <h2>Admin Register</h2>
+    <form>
+      <div class="input-group">
+        <input type="text" required id="name"   [(ngModel)]="name" name="name">
+        <label for="name">Name</label>
+      </div>
+      <div class="input-group">
+        <input type="email" required id="email" [(ngModel)]="email" name="email">
+        <label for="email">Email</label>
+      </div>
+      <div class="input-group">
+        <input type="password" required id="password" [(ngModel)]="password" name="password">
+        <label for="password">Password</label>
+      </div>
+      <div class="input-group">
+        <input type="role" required id="role" [(ngModel)]="role" name="role">
+        <label for="confirmPassword">Role</label>
+      </div>
+      <button type="button" (click)="register()">Register</button>
+    </form>
+    <p class="login-link">
+      Already admin? <a href="/">Login</a>
+    </p>
+  </div>
+</div>

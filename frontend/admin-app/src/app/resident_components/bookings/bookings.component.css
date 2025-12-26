@@ -1,0 +1,193 @@
+.main-container {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+  font-family: 'Poppins', sans-serif;
+  
+}
+
+.main-container h2 {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.main-container h2::after {
+  content: '';
+  width: 80px;
+  height: 4px;
+  background: #3498db;
+  display: block;
+  margin: 15px auto 0;
+  border-radius: 2px;
+}
+
+.bookings-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+.booking-card {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.booking-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.status-badge {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-badge.pending {
+  background: rgba(241, 196, 15, 0.3);
+  color: #f39c12;
+}
+
+.status-badge.approved {
+  background: rgba(46, 204, 113, 0.3);
+  color: #27ae60;
+}
+
+.status-badge.rejected {
+  background: rgba(231, 76, 60, 0.3);
+  color: #e74c3c;
+}
+
+.status-confirmed {
+  background: rgba(46, 204, 113, 0.3);
+  color: #27ae60;
+}
+
+.status-pending {
+  background: rgba(241, 196, 15, 0.3);
+  color: #f39c12;
+}
+
+.status-cancelled {
+  background: rgba(231, 76, 60, 0.3);
+  color: #e74c3c;
+}
+
+.payment-status {
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px dashed #ddd;
+}
+
+.payment-status.success {
+  color: #27ae60;
+}
+
+.card-body {
+  padding: 20px;
+  flex-grow: 1;
+  background: #fafafa;
+}
+
+.card-body p {
+  margin: 12px 0;
+  font-size: 16px;
+  color: #34495e;
+}
+
+.card-body strong {
+  color: #2c3e50;
+}
+
+.card-footer {
+  padding: 15px 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  background: #fff;
+  border-top: 1px solid #eee;
+}
+
+.view-btn,
+.cancel-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.view-btn {
+  background: #3498db;
+  color: #fff;
+}
+
+.view-btn:hover {
+  background: #2980b9;
+  transform: translateY(-2px);
+}
+
+.cancel-btn {
+  background: #e74c3c;
+  color: #fff;
+}
+
+.cancel-btn:hover {
+  background: #c0392b;
+  transform: translateY(-2px);
+}
+
+.no-bookings {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px;
+  font-size: 18px;
+  color: #7f8c8d;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .bookings-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .main-container h2 {
+    font-size: 28px;
+  }
+  
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}

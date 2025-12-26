@@ -1,0 +1,63 @@
+<app-navbar></app-navbar>
+<div class="page-wrapper">
+  <h1 class="title">Create New Tower</h1>
+
+  <div class="form-frame">
+    <div class="form-group">
+      <label class="label">Tower Name</label>
+      <input
+        type="text"
+        placeholder="Enter tower name (e.g., Tower A)"
+        [(ngModel)]="name"
+        class="input-field"
+      />
+    </div>
+    <button class="create-btn" (click)="createTower()" [disabled]="!name">
+      CREATE TOWER
+    </button>
+  </div>
+
+  <div class="list-frame">
+    <h2 class="subtitle">All Towers</h2>
+
+    <app-loading-spinner [isLoading]="isLoading" message="Loading towers..."></app-loading-spinner>
+
+    <div class="empty-state" *ngIf="!isLoading && towers.length === 0">
+      <p>No towers created yet.</p>
+    </div>
+
+    <ul class="towers-list" *ngIf="!isLoading">
+      <li *ngFor="let t of towers">
+        <div *ngIf="!t.editing" class="tower-item">
+          <div class="tower-info">
+            
+            <span class="tower-name">{{ t.name }}</span>
+          </div>
+          <div class="tower-actions">
+            <button class="btn edit-btn" (click)="startEdit(t)">
+              <i class="fas fa-edit"></i> Edit
+            </button>
+            <button class="btn delete-btn" (click)="deleteTower(t)">
+              <i class="fas fa-trash"></i> Delete
+            </button>
+          </div>
+        </div>
+
+        <div *ngIf="t.editing" class="edit-form">
+          <input
+            [(ngModel)]="t.editName"
+            placeholder="Edit tower name"
+            class="input-field edit-input"
+            autofocus
+          />
+          <button class="btn save-btn" (click)="saveEdit(t)">
+            <i class="fas fa-save"></i> Save
+          </button>
+          <button class="btn cancel-btn" (click)="cancelEdit(t)">
+            <i class="fas fa-times"></i> Cancel
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

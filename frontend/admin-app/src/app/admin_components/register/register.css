@@ -1,0 +1,171 @@
+:host {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: url('https://thumbs.dreamstime.com/b/urban-sunrise-boulevard-empty-city-street-sunrise-glowing-sun-modern-buildings-316705003.jpg') center/cover no-repeat fixed;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  position: relative;
+}
+
+:host::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(1px);
+  z-index: 1;
+}
+
+.portal-title {
+  position: absolute;
+  top: 40px;
+  left: 60px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #2c3e50;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+.register-container {
+  width: 100%;
+  max-width: 450px;
+  z-index: 2;
+  padding: 0 20px;
+}
+
+.form-wrapper {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 28px;
+  padding: 60px 50px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  animation: fadeInUp 1.5s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-weight: 700;
+  color: #1e293b;
+  font-size: 32px;
+  letter-spacing: 1px;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 35px;
+}
+
+.input-group input {
+  width: 90%;
+  padding: 18px 22px;
+  font-size: 17px;
+  color: #333;
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  border-radius: 18px;
+  outline: none;
+  transition: all 0.4s ease;
+}
+
+.input-group label {
+  position: absolute;
+  left: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 17px;
+  color: #666;
+  pointer-events: none;
+  transition: all 0.4s ease;
+  padding: 0 8px;
+  background: transparent;
+}
+
+.input-group input:focus,
+.input-group input:valid {
+  border-color: #f59e0b;
+  background: #fff;
+  box-shadow: 0 0 0 5px rgba(245, 158, 11, 0.2);
+}
+
+.input-group input:focus ~ label,
+.input-group input:valid ~ label {
+  top: 0;
+  font-size: 14px;
+  color: #d97706;
+  font-weight: 600;
+  background: #fff;
+}
+
+button {
+  width: 100%;
+  padding: 18px;
+  font-size: 19px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  border: none;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  box-shadow: 0 10px 25px rgba(245, 158, 11, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(245, 158, 11, 0.45);
+  background: linear-gradient(135deg, #fcd34d, #f97316);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 35px;
+  font-size: 16px;
+  color: #475569;
+}
+
+.login-link a {
+  color: #ea580c;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.4s ease;
+}
+
+.login-link a:hover {
+  color: #c2410c;
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .form-wrapper {
+    padding: 50px 30px;
+  }
+  .portal-title {
+    left: 30px;
+    font-size: 26px;
+    top: 30px;
+  }
+}

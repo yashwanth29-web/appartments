@@ -1,0 +1,109 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <!-- Add Amenity Section -->
+  <section class="add-section">
+    
+    <div class="form-card">
+      <h2>Add New Amenity</h2>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Amenity Name</label>
+          <input [(ngModel)]="form.name" placeholder="e.g. Swimming Pool" required />
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <input [(ngModel)]="form.description" placeholder="Brief description..." />
+        </div>
+        <div class="form-group">
+          <label>Image Filename</label>
+          <input [(ngModel)]="form.image" placeholder="e.g. pool.jpg" />
+          <div class="preview" *ngIf="form.image">
+            <img [src]="api.getImageUrl(form.image)" alt="Preview" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Tower</label>
+          <select [(ngModel)]="form.tower_name">
+            <option value="">Select Tower</option>
+            <option *ngFor="let t of towers" [value]="t.name">{{ t.name }}</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn btn-primary" (click)="addAmenity()" [disabled]="!form.name">
+        <i class="fas fa-plus"></i> Add Amenity
+      </button>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- Amenities List -->
+  <section class="list-section">
+    <h2>All Amenities</h2>
+    
+    <app-loading-spinner [isLoading]="isLoading" message="Loading amenities..."></app-loading-spinner>
+    
+    <div class="cards-grid" *ngIf="!isLoading">
+      <div class="card" *ngFor="let a of amenities">
+        <div class="card-header">
+          <h3>{{ a.name }}</h3>
+          <span class="tower-badge">{{ a.tower_name || 'Tower ' + a.tower_id }}</span>
+        </div>
+        <div class="card-body">
+          <p>{{ a.description || 'No description provided' }}</p>
+          <div class="card-image" *ngIf="a.image">
+            <img [src]="api.getImageUrl(a.image)" alt="{{ a.name }}" />
+          </div>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-edit" (click)="edit(a)">
+            <i class="fas fa-edit"></i> Edit
+          </button>
+          <button class="btn btn-delete" (click)="delete(a.id)">
+            <i class="fas fa-trash"></i> Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Enhanced Modal -->
+<div class="modal" *ngIf="editAmenity">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Edit Amenity</h3>
+      <button class="close-btn" (click)="editAmenity = null">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Amenity Name</label>
+          <input [(ngModel)]="editAmenity.name" required />
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <input [(ngModel)]="editAmenity.description" />
+        </div>
+        <div class="form-group">
+          <label>Image Filename</label>
+          <input [(ngModel)]="editAmenity.image" />
+          <div class="preview" *ngIf="editAmenity.image">
+            <img [src]="api.getImageUrl(editAmenity.image)" alt="Preview" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Tower</label>
+          <select [(ngModel)]="editAmenity.tower_name">
+            <option value="">Select Tower</option>
+            <option *ngFor="let t of towers" [value]="t.name">{{ t.name }}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" (click)="editAmenity = null">Cancel</button>
+      <button class="btn btn-primary" (click)="saveEdit()">Save Changes</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,188 @@
+<app-navbar></app-navbar>
+<!-- Hero Section – Ultra-premium luxury tower -->
+<section class="hero-section">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay">
+    <div class="hero-content">
+      <!-- Badge -->
+      <div class="hero-badge">
+        ADMIN DASHBOARD
+      </div>
+
+      <!-- Title -->
+      <h1 class="hero-title">Welcome Back</h1>
+
+      <!-- Subtitle -->
+      <p class="hero-subtitle">
+        Control your premium real-estate ecosystem with confidence.
+      </p>
+
+      <!-- Tags -->
+      <div class="hero-tags">
+        Towers • Units • Amenities • Bookings • Tenants • Revenue Insights
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Enhanced Quick Stats – 6 Cards with real images -->
+<section class="quick-stats premium-stats">
+
+  <!-- ===== SECTION HEADER ===== -->
+  <div class="stats-header">
+    <h2>Portfolio Overview</h2>
+    <p>Real-time insights across your real-estate ecosystem</p>
+  </div>
+
+  <!-- ===== STATS GRID ===== -->
+  <div class="stats-grid">
+
+    <div
+      class="stat-card"
+      *ngFor="let stat of statsArray"
+      [style.backgroundImage]="'url(' + stat.bg + ')'"
+      [class.highlight]="stat.highlight"
+    >
+      <!-- Overlay -->
+      <div class="stat-overlay">
+
+        <!-- Status badge (optional) -->
+        <span *ngIf="stat.attention" class="status-badge">Critical</span>
+        <span *ngIf="stat.positive && !stat.attention" class="status-badge">Stable</span>
+
+        <!-- Icon -->
+        <div class="icon-container">
+          <img
+            [src]="stat.image"
+            alt="{{ stat.title }}"
+            class="stat-icon"
+          />
+          <span class="icon-glow"></span>
+        </div>
+
+        <!-- Title -->
+        <h4>{{ stat.title }}</h4>
+
+        <!-- Value -->
+        <div class="stat-value">
+          <span class="value-main">
+            {{ stat.value }}{{ stat.suffix || '' }}
+          </span>
+          <span class="sparkles"></span>
+        </div>
+
+        <!-- Change indicator -->
+        <div
+          class="stat-change"
+          [ngClass]="{
+            positive: stat.positive,
+            attention: stat.attention
+          }"
+        >
+          {{ stat.change }}
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Perfectly Balanced Bento Grid -->
+<section class="bento-grid">
+  
+  <a  class="bento-card large">
+    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=90');"></div>
+    <div class="card-overlay"></div>
+    <div class="card-content">
+      <h3>Manage Towers</h3>
+      <p>Oversee your premium high-rise portfolio</p>
+      <span class="card-link">Manage Towers</span>
+    </div>
+  </a>
+
+  <a  class="bento-card tall">
+    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600&q=90');"></div>
+    <div class="card-overlay"></div>
+    <div class="card-content">
+      <h3>Premium Amenities</h3>
+      <p>Elevate resident experience with world-class facilities</p>
+      <span class="card-link">Manage Amenities</span>
+    </div>
+  </a>
+
+  <a class="bento-card wide">
+    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1600&q=90');"></div>
+    <div class="card-overlay"></div>
+    <div class="card-content">
+      <h3>Units & Tenants</h3>
+      <p>Track availability, assign tenants, manage leases</p>
+      <span class="card-link">Manage Units</span>
+    </div>
+  </a>
+
+  <a  class="bento-card">
+    <div class="card-content">
+      <h3>Pending Bookings</h3>
+      <p>9 requests awaiting approval</p>
+      <div class="progress-bar">
+        <div class="progress" style="width: 65%;"></div>
+      </div>
+      <span class="card-link">Review Now</span>
+    </div>
+  </a>
+
+  <a  class="bento-card">
+    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-b1f0d8a3e5e6?w=1600&q=90');"></div>
+    <div class="card-overlay"></div>
+    <div class="card-content">
+      <h3>Analytics & Insights</h3>
+      <p>Revenue growth, occupancy trends, forecasts</p>
+      <span class="card-link">View Insights</span>
+    </div>
+  </a>
+</section>
+
+<!-- Premium SaaS Footer -->
+<footer class="admin-footer">
+  <div class="footer-content">
+    <div class="footer-brand">
+      <h3>Elite Properties</h3>
+      <p>Premium Real Estate Management Platform</p>
+    </div>
+
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a routerLink="/dashboard">Dashboard</a></li>
+        <li><a routerLink="/towers">Towers</a></li>
+        <li><a routerLink="/units">Units</a></li>
+        <li><a routerLink="/bookings">Bookings</a></li>
+        <li><a routerLink="/analytics">Analytics</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="mailto:support@eliteproperties.com">Email Support</a></li>
+        <li><a href="#">Help Center</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+      </ul>
+      <p class="version">Version 1.2.3</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 Elite Properties. All rights reserved.</p>
+  </div>
+</footer>

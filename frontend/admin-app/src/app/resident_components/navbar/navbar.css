@@ -1,0 +1,163 @@
+/* Premium Luxury Navbar with Image Logo */
+
+.navbar {
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(15, 20, 30, 0.78);
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+  padding: 1.3rem 3.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45),
+              0 0 25px rgba(255, 215, 0, 0.12);
+  transition: all 0.4s ease;
+}
+
+
+
+/* Logo Container */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+/* Image Logo - Golden Luxury Icon */
+.logo-monogram a {
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.logo-monogram img {
+  width: 60px; /* Slightly larger for impact */
+  height: 60px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
+  transition: all 0.4s ease;
+}
+
+.logo-monogram:hover img {
+  transform: scale(1.12) rotate(4deg);
+  filter: drop-shadow(0 0 32px rgba(255, 215, 0, 0.8));
+}
+
+/* Logo Text */
+.logo {
+  font-size: 2.1rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ffd700, #ffea80, #e6b800);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  letter-spacing: 2px;
+  text-shadow: 0 3px 12px rgba(255, 215, 0, 0.3);
+  transition: all 0.4s ease;
+}
+
+.logo-container:hover .logo {
+  transform: translateY(-3px);
+  text-shadow: 0 6px 25px rgba(255, 215, 0, 0.5);
+}
+
+/* Nav Links */
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 3.2rem;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links li a {
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.92);
+  cursor: pointer;
+  padding: 0.7rem 0;
+  transition: color 0.4s ease;
+  text-decoration: none;
+  display: block;
+}
+
+.nav-links li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 3.5px;
+  background: linear-gradient(90deg, #ffd700, #e6b800);
+  border-radius: 3px;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transform: translateX(-50%);
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  color: #ffd700;
+}
+
+.nav-links li a:hover::after,
+.nav-links li a.active::after {
+  width: 100%;
+}
+
+.nav-links li a:hover {
+  text-shadow: 0 0 18px rgba(255, 215, 0, 0.45);
+}
+
+/* Logout */
+.nav-links .logout {
+  color: #ff7676;
+  font-weight: 700;
+}
+
+.nav-links .logout:hover {
+  color: #ff5252;
+  text-shadow: 0 0 18px rgba(255, 82, 82, 0.5);
+}
+
+.nav-links .logout::after {
+  background: linear-gradient(90deg, #ff7676, #ff5252);
+}
+
+/* Entrance Animation */
+
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .nav-links { gap: 2.5rem; }
+  .nav-links li { font-size: 1.05rem; }
+}
+
+@media (max-width: 992px) {
+  .navbar { padding: 1.2rem 2rem; }
+  .logo { font-size: 1.9rem; }
+  .logo-monogram img { width: 55px; height: 55px; }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 1.5rem;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .logo-container { gap: 1rem; }
+  .nav-links { gap: 2rem; }
+}
+
+@media (max-width: 480px) {
+  .logo { font-size: 1.7rem; }
+  .logo-monogram img { width: 50px; height: 50px; }
+  .nav-links li { font-size: 1rem; }
+}

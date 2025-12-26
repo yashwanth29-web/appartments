@@ -1,0 +1,33 @@
+<app-navbar></app-navbar>
+
+<div class="main-container">
+  <h2>My Bookings</h2>
+
+  <app-loading-spinner [isLoading]="isLoading" message="Loading your bookings..."></app-loading-spinner>
+
+  <div class="bookings-grid" *ngIf="!isLoading && bookings.length > 0">
+    <div *ngFor="let b of bookings" class="booking-card">
+      <div class="card-header">
+        <h3>Flat {{ b.flat_number || 'N/A' }}</h3>
+        <span class="status-badge" [class.pending]="b.status === 'pending'" 
+              [class.approved]="b.status === 'approved'" 
+              [class.rejected]="b.status === 'rejected'">
+          {{ b.status }}
+        </span>
+      </div>
+      <div class="card-body">
+        <p><strong>Booking ID:</strong> #{{ b.id }}</p>
+        <p><strong>Unit ID:</strong> {{ b.unit_id }}</p>
+        <p><strong>Booked by:</strong> {{ b.user_name }}</p>
+        <p><strong>Email:</strong> {{ b.user_mail }}</p>
+        <p class="payment-status" [class.success]="b.status === 'approved'">
+          <strong>Payment:</strong> {{ b.payment_status }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="no-bookings" *ngIf="!isLoading && bookings.length === 0">
+    <p>No bookings found. Start by booking a flat!</p>
+  </div>
+</div>

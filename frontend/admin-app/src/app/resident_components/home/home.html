@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resident Portal</title>
+  <link rel="stylesheet" href="home.css">
+</head>
+<body>
+  <app-navbar></app-navbar>
+
+  <!-- Section 1: Hero with Title & Description -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Welcome to Your Resident</h1>
+      <p class="hero-subtitle">
+        Smart access to amenities and unit bookings in our premium residential community.
+      </p>
+    </div>
+    
+    <!-- Twinkling Stars Animation -->
+    <div class="stars"></div>
+  </section>
+
+  <!-- Section 2: Premium Feature Cards (3 cards, clickable for navigation) -->
+  <section class="features">
+    <div class="container">
+      <div class="feature-grid">
+        <div class="feature-card" (click)="navigate('/units')">
+          <div class="card-image">
+            <img src="https://www.crescentbuilders.com/blog/wp-content/uploads/2025/01/3d-rendering-loft-luxury-living-room-with-bookshelf-near-bookshelf-1-1024x683.jpg" alt="Luxury Units">
+          </div>
+          <div class="card-content">
+            <h3>View Available Units</h3>
+            <p>Explore premium apartments and residences tailored to your lifestyle.</p>
+          </div>
+          <div class="card-glow"></div>
+        </div>
+
+        <div class="feature-card" (click)="navigate('/amenities')">
+          <div class="card-image">
+            <img src="https://thumbs.dreamstime.com/b/luxury-rooftop-terrace-night-city-skyline-view-modern-amenities-elegant-nighttime-showcasing-outdoor-furniture-318778011.jpg" alt="Exclusive Amenities">
+          </div>
+          <div class="card-content">
+            <h3>Exclusive Amenities</h3>
+            <p>Enjoy world-class facilities with secure and instant access.</p>
+          </div>
+          <div class="card-glow"></div>
+        </div>
+
+        <div class="feature-card" (click)="navigate('/bookings')">
+          <div class="card-image">
+            <img src="https://strattonamenities.com/wp-content/uploads/2025/02/Photo3-Stratton-Amenities-Concierge-Services.webp" alt="Manage Bookings">
+          </div>
+          <div class="card-content">
+            <h3>Manage Bookings</h3>
+            <p>Check status, request viewings, and secure your future home effortlessly.</p>
+          </div>
+          <div class="card-glow"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: (Optional empty or add more if needed - you mentioned 4 sections total) -->
+  <!-- You can add another section here if desired -->
+   <!-- Section 3: Premium Testimonials -->
+<!-- Section 3: Luxury Lifestyle Gallery (6 Images) -->
+<!-- Section 3: Luxury Lifestyle Gallery with Animated Background (8 Images) -->
+<section class="gallery">
+  
+
+  <div class="container">
+    <h2 class="section-title">Experience Elevated Living</h2>
+    <p class="section-subtitle">Discover the sophistication, comfort, and exclusivity that define our residential community.</p>
+    
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="https://media.gettyimages.com/id/1293762741/photo/modern-living-room-interior-3d-render.jpg?s=612x612&w=gi&k=20&c=6cE9Zg6kGSXOs9WrwCNG-3zXMyLkr1Y1_DH7qg_z-iY=" alt="Modern Luxury Living Room">
+        <div class="gallery-overlay"><h4>Exquisite Interiors</h4></div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="https://cdn.shopify.com/s/files/1/0745/7118/6490/files/ezgif.com-webp-to-jpg_1024x1024.jpg?v=1680560954" alt="High-End Apartment Design">
+        <div class="gallery-overlay"><h4>Timeless Elegance</h4></div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="https://ca-times.brightspotcdn.com/dims4/default/93de6dd/2147483647/strip/true/crop/2048x1152+0+0/resize/1440x810!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fc3%2F75%2Fd477138c39e192bc10bd2f8ac474%2Fla-los-angeles-residential-developments-are-pu-001" alt="Luxury Rooftop Amenities">
+        <div class="gallery-overlay"><h4>World-Class Rooftop</h4></div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="https://media.istockphoto.com/id/1393537665/photo/modern-townhouse-design.jpg?s=612x612&w=0&k=20&c=vgQesOXDRzz0UfOZxmUtE-rFe75YgA9GvkKS8eeeumE=" alt="Modern Building Exterior">
+        <div class="gallery-overlay"><h4>Iconic Architecture</h4></div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="https://thumbs.dreamstime.com/z/front-view-luxury-apartment-exterior-design-isolated-white-background-beautiful-modern-house-just-finished-new-residential-339844193.jpg" alt="Stunning Building Exterior">
+        <div class="gallery-overlay"><h4>Iconic Architecture</h4></div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="https://media.gettyimages.com/id/1373329869/photo/modern-living-room-interior-3d-render.jpg?s=612x612&w=gi&k=20&c=ZdsXctfsZMaiq6gan0AH0o44fBbkPzl_pXGy2Li3WHI=" alt="Elegant Bedroom">
+        <div class="gallery-overlay"><h4>Serene Bedrooms</h4></div>
+      </div>
+      
+      <!-- New Image 7: State-of-the-Art Gym -->
+      <div class="gallery-item">
+        <img src="https://cdngeneralcf.rentcafe.com//dmslivecafe/UploadedImages/281b2340-2a04-45c5-a108-e40fa2500ea6.png" alt="Premium Fitness Center">
+        <div class="gallery-overlay"><h4>State-of-the-Art Gym</h4></div>
+      </div>
+      
+      <!-- New Image 8: Elegant Lobby & Concierge -->
+      <div class="gallery-item">
+        <img src="https://acucraft.com/wp-content/uploads/2019/08/Acucraft-Custom-See-Through-Indoor-Outdoor-Gas-Fireplace-Private-Residence-1024x657.jpg" alt="Luxury Lobby">
+        <div class="gallery-overlay"><h4>Elegant Lobby</h4></div>
+      </div>
+    </div>
+  </div>
+</section>
+  <!-- Section 4: Footer with Premium Background -->
+  <!-- Section 4: Enhanced Premium Footer -->
+<!-- Updated Footer Section -->
+<footer class="footer">
+  <div class="footer-overlay"></div>
+  
+  <!-- Gentle Peaceful Particle Animation -->
+  <div class="particles"></div>
+
+  <div class="container footer-content">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <h4>Resident Portal</h4>
+        <p class="footer-tagline">Your Gateway to Luxury Living</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#">About Us</a>
+        <a href="#">Contact</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+
+      <div class="footer-social">
+        <p>Connect with us</p>
+        <div class="social-icons">
+          <a href="#" aria-label="Instagram">Instagram</a>
+          <a href="#" aria-label="Twitter">Twitter</a>
+          <a href="#" aria-label="Facebook">Facebook</a>
+          <a href="#" aria-label="LinkedIn">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Resident Portal. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

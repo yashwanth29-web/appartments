@@ -1,0 +1,446 @@
+/* home.css - Premium Luxury Design */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  color: #ffffff;
+  background: #0a121f;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 800px;
+  background: url('https://www.lxcollection.com/wp-content/uploads/2020/09/Belnord-Hero-Shot-4.jpg') center/cover no-repeat fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(10,15,30,0.4), rgba(10,15,30,0.85));
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 1000px;
+  animation: fadeInUp 1.8s ease-out;
+}
+
+.hero-title {
+  font-family:fantasy;
+  font-display: fallback;
+  font-weight: 500;
+  font-size: 4.5rem;
+  font-weight: 500;
+  color: #ffd700;
+  margin-bottom: 1.5rem;
+  letter-spacing: 3px;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+}
+
+.hero-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.8rem;
+  font-style: italic;
+  max-width: 1100px;
+  margin:30px;
+  line-height: 1;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+
+}
+
+/* Twinkling Stars (like gentle rain of light) */
+.stars {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.stars::before, .stars::after, .stars::before {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #ffd700;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #ffd700;
+  animation: twinkle 4s infinite linear;
+}
+
+.stars::before { top: 20%; left: 30%; animation-delay: 0s; }
+.stars::after { top: 40%; left: 70%; animation-delay: 1.5s; }
+.stars div:nth-child(1) { top: 60%; left: 50%; animation-delay: 2.5s; }
+/* Add more via JS or duplicate for effect */
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+/* Features Section - Amazing Animated Cards */
+.features {
+  padding: 8rem 0;
+  background: linear-gradient(to bottom, #0a121f, #152038);
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 3rem;
+}
+
+.feature-card {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  background: rgba(20, 30, 50, 0.6);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  cursor: pointer;
+  transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+  animation: cardFadeIn 1.2s ease-out forwards;
+}
+
+.feature-card:hover {
+  transform: translateY(-20px) scale(1.05);
+  border-color: #ffd700;
+  box-shadow: 0 30px 70px rgba(255, 215, 0, 0.4);
+}
+
+.card-image img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.feature-card:hover .card-image img {
+  transform: scale(1.15);
+}
+
+.card-content {
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.card-content h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: #ffd700;
+  margin-bottom: 1rem;
+}
+
+.card-content p {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.6;
+}
+
+.card-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255,215,0,0.15), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.6s;
+}
+
+.feature-card:hover .card-glow {
+  opacity: 1;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(80px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cardFadeIn {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.feature-card:nth-child(1) { animation-delay: 0.3s; }
+.feature-card:nth-child(2) { animation-delay: 0.6s; }
+.feature-card:nth-child(3) { animation-delay: 0.9s; }
+
+
+
+/* Footer with Image Background */
+/* Enhanced Premium Footer */
+/* Updated Footer - No Background Image, More Premium & Peaceful */
+.footer {
+  position: relative;
+  padding: 4rem 2rem;
+  height: 40vh;
+  background: linear-gradient(135deg, #0a121f 0%, #152038 50%, #1a2a44 100%);
+  background: url('https://thumbs.dreamstime.com/b/luxury-rooftop-terrace-night-city-skyline-view-modern-amenities-elegant-nighttime-showcasing-outdoor-furniture-318778011.jpg') center/cover no-repeat fixed;
+  overflow: hidden;
+  color: #ffffff;
+}
+
+.footer-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255, 215, 0, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Peaceful Floating Particles (like gentle light rain / stars) */
+.particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.particles::before,
+.particles::after,
+.particles div {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #ffd700;
+  border-radius: 50%;
+  opacity: 0.6;
+  box-shadow: 0 0 12px #ffd700;
+  animation: float 12s infinite linear;
+}
+
+.particles::before { top: 10%; left: 20%; animation-delay: 0s; }
+.particles::after { top: 30%; left: 60%; animation-delay: 4s; }
+.particles div:nth-child(1) { top: 50%; left: 40%; animation-delay: 8s; width: 8px; height: 8px; }
+/* You can add more manually or via JS for denser effect */
+
+@keyframes float {
+  0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.8; }
+  100% { transform: translateY(-100px) translateX(100px); opacity: 0; }
+}
+
+.footer-content {
+  position: relative;
+  z-index: 2;
+}
+
+.footer-main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 4rem;
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.footer-brand h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  color: #ffd700;
+  margin-bottom: 0.5rem;
+}
+
+.footer-tagline {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.footer-links a {
+  display: block;
+  margin: 0.8rem 0;
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  transition: color 0.4s;
+}
+
+.footer-links a:hover {
+  color: #ffd700;
+}
+
+.footer-social p {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.social-icons a {
+  font-size: 1.8rem;
+  color: rgba(255,255,255,0.7);
+  transition: all 0.4s;
+}
+
+.social-icons a:hover {
+  color: #ffd700;
+  transform: translateY(-4px);
+  text-shadow: 0 0 15px rgba(255,215,0,0.5);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,215,0,0.2);
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-main {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .footer-brand h4 {
+    font-size: 2.5rem;
+  }
+}
+
+/* Luxury Gallery Section - Optimized Size */
+/* Luxury Gallery Section with Animated Video Background */
+/* Luxury Gallery Section - Rich Golden Dust/Confetti Falling Animation */
+.gallery {
+  padding: 7rem 0;
+  position: relative;
+  overflow: hidden;
+  background: #000000; /* Pure black fallback for rich contrast */
+}
+
+.gallery::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('https://static.vecteezy.com/system/resources/thumbnails/067/903/908/small_2x/glowing-golden-particles-floating-in-dark-space-with-soft-lens-flares-creating-a-luxurious-festive-and-magical-background-for-motion-design-celebration-or-presentation-projects-seamless-loop-4k-video.jpg') center/cover no-repeat;
+  background-size: cover;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.85; /* Slightly transparent so gallery images pop */
+  animation: subtleGlow 25s linear infinite;
+}
+
+/* Keep the subtle pulse for extra richness */
+.gallery::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255,215,0,0.1), transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+  animation: pulseGlow 18s ease-in-out infinite alternate;
+}
+
+@keyframes subtleGlow {
+  0% { opacity: 0.75; }
+  50% { opacity: 0.9; }
+  100% { opacity: 0.75; }
+}
+
+@keyframes pulseGlow {
+  from { opacity: 0.08; }
+  to { opacity: 0.18; }
+}
+
+/* Content above animation */
+.container {
+  position: relative;
+  z-index: 2;
+}
+.container {
+  position: relative;
+  z-index: 2;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  text-align: center;
+  color: #ffd700;
+  margin-bottom: 1.2rem;
+  letter-spacing: 1.8px;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 1.4rem;
+  max-width: 800px;
+  margin: 0 auto 4rem;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.6;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.6);
+  transition: all 0.6s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-12px) scale(1.04);
+  box-shadow: 0 25px 60px rgba(255,215,0,0.28);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+  display: block;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.12);
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,15,30,0.88), transparent 60%);
+  display: flex;
+  align-items: flex-end;
+  padding: 1.8rem;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.gallery-overlay h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: #ffd700;
+  margin: 0;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .gallery { padding: 5rem 0; }
+  .section-title { font-size: 2.8rem; }
+  .gallery-item img { height: 280px; }
+}

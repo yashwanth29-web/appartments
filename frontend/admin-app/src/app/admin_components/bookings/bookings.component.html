@@ -1,0 +1,55 @@
+
+<app-navbar></app-navbar>
+<div class="page-wrapper">
+  <h1 class="title">Booking Requests</h1>
+  
+  <app-loading-spinner [isLoading]="isLoading" message="Loading bookings..."></app-loading-spinner>
+  
+  <div class="cards-wrapper" *ngIf="!isLoading">
+    <div class="card" *ngFor="let b of results; let i = index" [style.--delay]="i * 0.15 + 's'">
+      <div class="card-frame">
+        <div class="card-header">
+          <span class="card-title">Booking Request</span>
+        </div>
+        <div class="card-content">
+          <div class="detail-row">
+            <span class="label">Booking ID:</span>
+            <span class="value">{{ b.id }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="label">User:</span>
+            <span class="value">{{b.user_name}} </span>
+          </div>
+          <div *ngIf="b.approved_date" class="detail-row">
+            <span class="label">Approved on:</span>
+            <span class="value">{{ b.approved_date | date }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="label">Flat:</span>
+            <span class="value">{{ b.flat_number || 'N/A' }}</span>
+          </div>
+          <div class="detail-row status-row">
+            <span class="label">Status:</span>
+            <span class="status-badge {{ b.status }}">{{ b.status | titlecase }}</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <button 
+            class="btn btn-approve" 
+            (click)="update(b.id, 'approved')"
+            [disabled]="b.status === 'approved'"
+          >
+            <i class="fas fa-check"></i> Approve
+          </button>
+          <button 
+            class="btn btn-reject" 
+            (click)="update(b.id, 'rejected')"
+            [disabled]="b.status === 'rejected'"
+          >
+            <i class="fas fa-times"></i> Reject
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

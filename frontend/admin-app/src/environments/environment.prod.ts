@@ -2,5 +2,5 @@
 // BACKEND_API_URL will be replaced during Docker build
 export const environment = {
   production: true,
-  apiUrl: 'BACKEND_API_URL'
+  apiUrl: 'https://apartment-backend-nzuzyvi5nq-el.a.run.app/api'
 };

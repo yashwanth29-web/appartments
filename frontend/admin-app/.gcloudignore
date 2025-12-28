@@ -1,0 +1,16 @@
+# Ignore files for GCP Cloud Build
+.git
+.gitignore
+node_modules/
+dist/
+.angular/
+*.log
+.DS_Store
+Thumbs.db
+*.md
+.env
+.env.*
+e2e/
+coverage/
+.vscode/
+.idea/

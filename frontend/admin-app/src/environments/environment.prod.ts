@@ -1,5 +1,6 @@
 // Production environment settings
+// BACKEND_API_URL will be replaced during Docker build
 export const environment = {
   production: true,
-  apiUrl: '/api'  // Uses nginx proxy in production
+  apiUrl: 'BACKEND_API_URL'
 };

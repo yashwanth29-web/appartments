@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
+
 @Injectable({ providedIn: 'root' })
 export class ApiService {
 
+  // Base URL - empty string for production (uses relative paths with nginx proxy)
   private baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
@@ -31,25 +33,25 @@ export class ApiService {
   /* ================= AUTH ================= */
 
   login(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/api/auth/login`, data);
+    return this.http.post(`${this.baseUrl}/auth/login`, data);
   }
 
   register(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/api/auth/register`, data);
+    return this.http.post(`${this.baseUrl}/auth/register`, data);
   }
 
   /* ================= RESIDENT APIs ================= */
 
   getResidentUnits(): Observable<any[]> {
     return this.http.get<any[]>(
-      `${this.baseUrl}/api/admin/units`,
+      `${this.baseUrl}/admin/units`,
       { headers: this.authHeaders() }
     );
   }
 
   bookUnit(unitId: number): Observable<any> {
     return this.http.post(
-      `${this.baseUrl}/api/bookings`,
+      `${this.baseUrl}/bookings`,
       { unit_id: unitId },
       { headers: this.authHeaders() }
     );
@@ -57,14 +59,14 @@ export class ApiService {
 
   myBookings(): Observable<any[]> {
     return this.http.get<any[]>(
-      `${this.baseUrl}/api/bookings/my`,
+      `${this.baseUrl}/bookings/my`,
       { headers: this.authHeaders() }
     );
   }
 
   getResidentAmenities(): Observable<any[]> {
     return this.http.get<any[]>(
-      `${this.baseUrl}/api/admin/amenities`,
+      `${this.baseUrl}/admin/amenities`,
       { headers: this.authHeaders() }
     );
   }
@@ -73,7 +75,7 @@ export class ApiService {
 
   getAdminDashboard(): Observable<any> {
     return this.http.get(
-      `${this.baseUrl}/api/admin/dashboard`,
+      `${this.baseUrl}/admin/dashboard`,
       { headers: this.authHeaders() }
     );
   }
@@ -81,14 +83,14 @@ export class ApiService {
   /* ----- Towers ----- */
   getTowers(): Observable<any[]> {
     return this.http.get<any[]>(
-      `${this.baseUrl}/api/admin/towers`,
+      `${this.baseUrl}/admin/towers`,
       { headers: this.authHeaders() }
     );
   }
 
   createTower(name: string): Observable<any> {
     return this.http.post(
-      `${this.baseUrl}/api/admin/towers`,
+      `${this.baseUrl}/admin/towers`,
       { name },
       { headers: this.authHeaders() }
     );
@@ -96,7 +98,7 @@ export class ApiService {
 
   updateTower(id: number, name: string): Observable<any> {
     return this.http.put(
-      `${this.baseUrl}/api/admin/towers/${id}`,
+      `${this.baseUrl}/admin/towers/${id}`,
       { name },
       { headers: this.authHeaders() }
     );
@@ -104,7 +106,7 @@ export class ApiService {
 
   deleteTower(id: number): Observable<any> {
     return this.http.delete(
-      `${this.baseUrl}/api/admin/towers/${id}`,
+      `${this.baseUrl}/admin/towers/${id}`,
       { headers: this.authHeaders() }
     );
   }
@@ -112,14 +114,14 @@ export class ApiService {
   /* ----- Units ----- */
   getAdminUnits(): Observable<any[]> {
     return this.http.get<any[]>(
-      `${this.baseUrl}/api/admin/units`,
+      `${this.baseUrl}/admin/units`,
       { headers: this.authHeaders() }
     );
   }
 
   createUnit(data: any): Observable<any> {
     return this.http.post(
-      `${this.baseUrl}/api/admin/units`,
+      `${this.baseUrl}/admin/units`,
       data,
       { headers: this.authHeaders() }
     );
@@ -127,7 +129,7 @@ export class ApiService {
 
   updateUnit(id: number, data: any): Observable<any> {
     return this.http.put(
-      `${this.baseUrl}/api/admin/units/${id}`,
+      `${this.baseUrl}/admin/units/${id}`,
       data,
       { headers: this.authHeaders() }
     );
@@ -135,7 +137,7 @@ export class ApiService {
 
   deleteUnit(id: number): Observable<any> {
     return this.http.delete(
-      `${this.baseUrl}/api/admin/units/${id}`,
+      `${this.baseUrl}/admin/units/${id}`,
       { headers: this.authHeaders() }
     );
   }
@@ -143,14 +145,14 @@ export class ApiService {
   /* ----- Bookings ----- */
   getAdminBookings(): Observable<any[]> {
     return this.http.get<any[]>(
-      `${this.baseUrl}/api/admin/bookings`,
+      `${this.baseUrl}/admin/bookings`,
       { headers: this.authHeaders() }
     );
   }
 
   updateBooking(id: number, status: string): Observable<any> {
     return this.http.put(
-      `${this.baseUrl}/api/admin/bookings/${id}`,
+      `${this.baseUrl}/admin/bookings/${id}`,
       { status },
       { headers: this.authHeaders() }
     );
@@ -159,14 +161,14 @@ export class ApiService {
   /* ----- Amenities ----- */
   getAdminAmenities(): Observable<any[]> {
     return this.http.get<any[]>(
-      `${this.baseUrl}/api/admin/amenities`,
+      `${this.baseUrl}/admin/amenities`,
       { headers: this.authHeaders() }
     );
   }
 
   addAmenity(data: any): Observable<any> {
     return this.http.post(
-      `${this.baseUrl}/api/admin/amenities`,
+      `${this.baseUrl}/admin/amenities`,
       data,
       { headers: this.authHeaders() }
     );
@@ -174,7 +176,7 @@ export class ApiService {
 
   updateAmenity(id: number, data: any): Observable<any> {
     return this.http.put(
-      `${this.baseUrl}/api/admin/amenities/${id}`,
+      `${this.baseUrl}/admin/amenities/${id}`,
       data,
       { headers: this.authHeaders() }
     );
@@ -182,7 +184,7 @@ export class ApiService {
 
   deleteAmenity(id: number): Observable<any> {
     return this.http.delete(
-      `${this.baseUrl}/api/admin/amenities/${id}`,
+      `${this.baseUrl}/admin/amenities/${id}`,
       { headers: this.authHeaders() }
     );
   }
@@ -190,14 +192,14 @@ export class ApiService {
   /* ----- Leases ----- */
   getLeases(): Observable<any[]> {
     return this.http.get<any[]>(
-      `${this.baseUrl}/api/admin/leases`,
+      `${this.baseUrl}/admin/leases`,
       { headers: this.authHeaders() }
     );
   }
 
   createLease(data: any): Observable<any> {
     return this.http.post(
-      `${this.baseUrl}/api/admin/leases`,
+      `${this.baseUrl}/admin/leases`,
       data,
       { headers: this.authHeaders() }
     );
@@ -205,7 +207,7 @@ export class ApiService {
 
   updateLease(id: number, data: any): Observable<any> {
     return this.http.put(
-      `${this.baseUrl}/api/admin/leases/${id}`,
+      `${this.baseUrl}/admin/leases/${id}`,
       data,
       { headers: this.authHeaders() }
     );
@@ -213,7 +215,7 @@ export class ApiService {
 
   deleteLease(id: number): Observable<any> {
     return this.http.delete(
-      `${this.baseUrl}/api/admin/leases/${id}`,
+      `${this.baseUrl}/admin/leases/${id}`,
       { headers: this.authHeaders() }
     );
   }

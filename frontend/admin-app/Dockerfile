@@ -4,7 +4,7 @@ WORKDIR /app
 
 # Accept backend URL as build argument OR environment variable
 ARG BACKEND_URL
-ENV BACKEND_URL=${BACKEND_URL:-https://apartment-backend-xxxxx.run.app}
+ENV BACKEND_URL=${BACKEND_URL:-https://apartment-backend-nzuzyvi5nq-el.a.run.app}
 
 # Copy package files
 COPY package*.json ./

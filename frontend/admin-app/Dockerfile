@@ -2,8 +2,9 @@
 FROM node:20-alpine AS build
 WORKDIR /app
 
-# Accept backend URL as build argument
-ARG BACKEND_URL=https://apartment-backend-xxxxx.run.app
+# Accept backend URL as build argument OR environment variable
+ARG BACKEND_URL
+ENV BACKEND_URL=${BACKEND_URL:-https://apartment-backend-xxxxx.run.app}
 
 # Copy package files
 COPY package*.json ./
@@ -12,8 +13,18 @@ RUN npm ci --legacy-peer-deps
 # Copy source
 COPY . .
 
-# Replace placeholder in environment.prod.ts with actual backend URL
-RUN sed -i "s|BACKEND_API_URL|${BACKEND_URL}/api|g" src/environments/environment.prod.ts
+# Debug: Show BACKEND_URL value
+RUN echo "BACKEND_URL is: ${BACKEND_URL}"
+
+# Replace environment.prod.ts with actual backend URL
+RUN echo "// Production environment - Auto-generated" > src/environments/environment.prod.ts && \
+    echo "export const environment = {" >> src/environments/environment.prod.ts && \
+    echo "  production: true," >> src/environments/environment.prod.ts && \
+    echo "  apiUrl: '${BACKEND_URL}/api'" >> src/environments/environment.prod.ts && \
+    echo "};" >> src/environments/environment.prod.ts
+
+# Debug: Show the generated file
+RUN echo "=== Generated environment.prod.ts ===" && cat src/environments/environment.prod.ts
 
 # Build with production configuration
 RUN npm run build -- --configuration=production

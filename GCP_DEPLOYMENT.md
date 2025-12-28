@@ -57,7 +57,7 @@ gcloud run deploy apartment-frontend \
   --platform managed \
   --allow-unauthenticated \
   --memory 256Mi \
-  --build-arg "BACKEND_URL=https://apartment-backend-xxxxx-uc.a.run.app"
+  --set-build-env-vars "BACKEND_URL=https://apartment-backend-xxxxx-uc.a.run.app"
 
 # Get the frontend URL
 gcloud run services describe apartment-frontend --region us-central1 --format='value(status.url)'
@@ -119,7 +119,7 @@ gcloud run deploy apartment-backend --source . --region us-central1
 # Update frontend (with backend URL)
 cd ../frontend/admin-app
 gcloud run deploy apartment-frontend --source . --region us-central1 \
-  --build-arg "BACKEND_URL=https://your-backend-url.run.app"
+  --set-build-env-vars "BACKEND_URL=https://your-backend-url.run.app"
 ```
 
 ## Cost Optimization

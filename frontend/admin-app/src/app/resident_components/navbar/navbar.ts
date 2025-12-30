@@ -13,20 +13,29 @@ export class NavbarComponent {
 
   constructor(private router: Router) {}
 
+  currentRoute: string = '';
+  mobileMenuOpen: boolean = false;
 
-currentRoute: string = '';
+  ngOnInit() {
+    this.currentRoute = this.router.url;
+  }
 
-ngOnInit() {
-  this.currentRoute = this.router.url;
-}
+  navigate(route: string) {
+    this.currentRoute = route;
+    this.closeMobileMenu();
+    this.router.navigate([route]);
+  }
 
-navigate(route: string) {
-  this.currentRoute = route;
-  this.router.navigate([route]);
-}
-  
+  toggleMobileMenu() {
+    this.mobileMenuOpen = !this.mobileMenuOpen;
+  }
+
+  closeMobileMenu() {
+    this.mobileMenuOpen = false;
+  }
 
   logout() {
+    this.closeMobileMenu();
     localStorage.clear();
     this.router.navigate(['/']);
   }

@@ -13,16 +13,27 @@ export class Navbar {
 
   constructor(private router: Router) {}
   isDropdownOpen = false;
+  mobileMenuOpen = false;
 
-toggleDropdown() {
-  this.isDropdownOpen = !this.isDropdownOpen;
-}
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  toggleMobileMenu() {
+    this.mobileMenuOpen = !this.mobileMenuOpen;
+  }
+
+  closeMobileMenu() {
+    this.mobileMenuOpen = false;
+  }
 
   go(path: string) {
+    this.closeMobileMenu();
     this.router.navigate([path]);
   }
 
   logout() {
+    this.closeMobileMenu();
     localStorage.clear();
     this.router.navigate(['/login']);
   }

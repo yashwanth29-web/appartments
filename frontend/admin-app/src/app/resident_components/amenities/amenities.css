@@ -1,98 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap');
+
+/* ========================================
+   LUXURY GOLD & BLACK THEME - RESIDENT AMENITIES
+======================================== */
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: linear-gradient(to bottom, #f8fafc, #e2e8f0);
-  color: #1e293b;
-  min-height: 80vh;
+  font-family: 'Montserrat', sans-serif;
+  background: #020617;
+  color: #e5e7eb;
+  min-height: 100vh;
 }
 
 .page {
-  max-width: 90%;
-  
-
-  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 30px;
+  min-height: 100vh;
+  background: radial-gradient(ellipse at top, #0f0f1a 0%, #020617 50%, #000 100%);
+  position: relative;
 }
 
+.page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.04) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+/* Main Title */
 .main-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 3.5rem;
+  font-family: 'Cinzel', serif;
+  font-size: 3.2rem;
   font-weight: 700;
   text-align: center;
-  margin-bottom: 1rem;
-  background: linear-gradient(135deg, #1e40af, #3b82f6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  margin-bottom: 1.5rem;
+  color: #ffd700;
+  text-shadow: 0 0 40px rgba(255, 215, 0, 0.4);
+  letter-spacing: 3px;
   position: relative;
+  animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+  from { text-shadow: 0 0 30px rgba(255, 215, 0, 0.3); }
+  to { text-shadow: 0 0 50px rgba(255, 215, 0, 0.6); }
 }
 
 .main-title::after {
   content: '';
   display: block;
-  width: 120px;
+  width: 150px;
   height: 4px;
-  background: linear-gradient(135deg, #3b82f6, #60a5fa);
-  margin: 20px auto 40px;
+  background: linear-gradient(90deg, transparent, #ffd700, #d4af37, #ffd700, transparent);
+  margin: 25px auto 50px;
   border-radius: 2px;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
 }
 
+
+/* Search Container */
 .search-container {
   position: relative;
   max-width: 600px;
-  margin: 0 auto 60px;
+  margin: 0 auto 70px;
 }
 
 .search-input {
   width: 100%;
-  padding: 16px 60px 16px 24px;
+  padding: 18px 60px 18px 28px;
   font-size: 1.1rem;
-  border: none;
+  border: 2px solid rgba(212, 175, 55, 0.3);
   border-radius: 50px;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.5);
+  color: #e5e7eb;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
   transition: all 0.4s ease;
   backdrop-filter: blur(10px);
 }
 
+.search-input::placeholder {
+  color: #6b7280;
+}
+
 .search-input:focus {
   outline: none;
-  box-shadow: 0 15px 40px rgba(59, 130, 246, 0.25);
-  transform: translateY(-2px);
+  border-color: #ffd700;
+  box-shadow: 0 20px 50px rgba(255, 215, 0, 0.2);
+  transform: translateY(-3px);
 }
 
 .search-icon {
   position: absolute;
-  right: 20px;
+  right: 24px;
   top: 50%;
   transform: translateY(-50%);
-  width: 28px;
-  height: 28px;
-  fill: #64748b;
-  transition: fill 0.3s ease;
+  width: 26px;
+  height: 26px;
+  fill: #d4af37;
+  transition: all 0.3s ease;
 }
 
 .search-input:focus + .search-icon {
-  fill: #3b82f6;
+  fill: #ffd700;
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
 }
 
+/* Tower Section */
 .tower-section {
-  margin-bottom: 0px;
+  margin-bottom: 60px;
   opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 0.8s ease forwards;
-  width: 100%;
-
+  transform: translateY(40px);
+  animation: sectionFadeIn 0.8s ease forwards;
 }
 
-.tower-section:nth-child(even) {
-  animation-delay: 0.2s;
-}
+.tower-section:nth-child(2) { animation-delay: 0.2s; }
+.tower-section:nth-child(3) { animation-delay: 0.4s; }
+.tower-section:nth-child(4) { animation-delay: 0.6s; }
 
-@keyframes fadeInUp {
+@keyframes sectionFadeIn {
   to {
     opacity: 1;
     transform: translateY(0);
@@ -101,11 +137,12 @@ body {
 
 .tower-title {
   font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-  margin-bottom: 30px;
+  font-size: 2.2rem;
+  margin-bottom: 35px;
   position: relative;
-  padding-left: 60px;
-  color: #1e293b;
+  padding-left: 70px;
+  color: #ffd700;
+  text-shadow: 0 2px 15px rgba(255, 215, 0, 0.3);
 }
 
 .tower-title::before {
@@ -113,36 +150,77 @@ body {
   position: absolute;
   left: 0;
   top: 50%;
-  width: 40px;
+  width: 50px;
   height: 3px;
-  background: #3b82f6;
+  background: linear-gradient(90deg, #ffd700, #d4af37);
   border-radius: 2px;
   transform: translateY(-50%);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
 }
 
+
+/* Amenities Grid */
 .amenities-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 35px;
 }
 
+/* Amenity Card - Luxury Design */
 .amenity-card {
-  background: white;
-  border-radius: 20px;
+  background: linear-gradient(145deg, #1a1a2e, #0f0f1a);
+  border-radius: 22px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
+  box-shadow: 
+    0 25px 60px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 215, 0, 0.1);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: cardFloat 0.8s ease forwards;
+}
+
+.amenity-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  padding: 2px;
+  background: linear-gradient(135deg, #ffd700, rgba(212, 175, 55, 0.2), #b8860b);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.5;
+  transition: opacity 0.4s ease;
 }
 
 .amenity-card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 25px 50px rgba(59, 130, 246, 0.2);
+  transform: translateY(-15px) scale(1.03);
+  box-shadow: 
+    0 40px 80px rgba(0, 0, 0, 0.8),
+    0 0 50px rgba(212, 175, 55, 0.15);
 }
 
+.amenity-card:hover::before {
+  opacity: 1;
+}
+
+@keyframes cardFloat {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Card Image */
 .card-image-wrapper {
   position: relative;
-  height: 240px;
+  height: 260px;
   overflow: hidden;
 }
 
@@ -150,56 +228,242 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s ease;
+  transition: transform 0.7s ease;
 }
 
 .amenity-card:hover .card-image {
-  transform: scale(1.12);
+  transform: scale(1.15);
 }
 
 .card-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent 60%);
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.5s ease;
 }
 
 .amenity-card:hover .card-overlay {
   opacity: 1;
 }
 
+/* Card Content */
 .card-content {
-  padding: 24px;
+  padding: 28px;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.3));
 }
 
 .card-title {
-  font-size: 1.5rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
   font-weight: 600;
-  margin: 0 0 12px;
-  color: #1e293b;
+  margin: 0 0 14px;
+  color: #ffd700;
+  text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
 }
 
 .card-description {
   font-size: 1rem;
-  line-height: 1.6;
-  color: #64748b;
+  line-height: 1.7;
+  color: #9ca3af;
   margin: 0;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+======================================== */
+
+/* Large Desktop */
+@media (max-width: 1200px) {
+  .amenities-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .page {
+    padding: 50px 25px;
+  }
   .main-title {
-    font-size: 2.8rem;
+    font-size: 2.6rem;
   }
-  
+  .main-title::after {
+    width: 120px;
+    margin: 20px auto 40px;
+  }
+  .search-container {
+    max-width: 500px;
+    margin-bottom: 55px;
+  }
+  .search-input {
+    padding: 16px 55px 16px 24px;
+    font-size: 1rem;
+  }
   .tower-title {
-    font-size: 2rem;
-    padding-left: 50px;
+    font-size: 1.9rem;
+    padding-left: 60px;
   }
-  
+  .tower-title::before {
+    width: 40px;
+  }
+  .amenities-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 28px;
+  }
+  .card-image-wrapper {
+    height: 230px;
+  }
+}
+
+/* Mobile Landscape */
+@media (max-width: 768px) {
+  .page {
+    padding: 40px 18px;
+  }
+  .main-title {
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+  }
+  .main-title::after {
+    width: 100px;
+    height: 3px;
+    margin: 18px auto 35px;
+  }
+  .search-container {
+    max-width: 100%;
+    margin-bottom: 45px;
+  }
+  .search-input {
+    padding: 15px 50px 15px 22px;
+    font-size: 0.95rem;
+    border-radius: 40px;
+  }
+  .search-icon {
+    width: 22px;
+    height: 22px;
+    right: 20px;
+  }
+  .tower-section {
+    margin-bottom: 45px;
+  }
+  .tower-title {
+    font-size: 1.6rem;
+    padding-left: 50px;
+    margin-bottom: 28px;
+  }
+  .tower-title::before {
+    width: 35px;
+    height: 2px;
+  }
   .amenities-grid {
     grid-template-columns: 1fr;
     gap: 24px;
+  }
+  .amenity-card {
+    border-radius: 18px;
+  }
+  .card-image-wrapper {
+    height: 220px;
+  }
+  .card-content {
+    padding: 22px;
+  }
+  .card-title {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+  .card-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+}
+
+/* Mobile Portrait */
+@media (max-width: 480px) {
+  .page {
+    padding: 30px 14px;
+  }
+  .main-title {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+  }
+  .main-title::after {
+    width: 80px;
+    margin: 15px auto 30px;
+  }
+  .search-container {
+    margin-bottom: 35px;
+  }
+  .search-input {
+    padding: 14px 45px 14px 18px;
+    font-size: 0.9rem;
+    border-radius: 35px;
+  }
+  .search-icon {
+    width: 20px;
+    height: 20px;
+    right: 16px;
+  }
+  .tower-section {
+    margin-bottom: 35px;
+  }
+  .tower-title {
+    font-size: 1.4rem;
+    padding-left: 42px;
+    margin-bottom: 22px;
+  }
+  .tower-title::before {
+    width: 28px;
+  }
+  .amenities-grid {
+    gap: 20px;
+  }
+  .amenity-card {
+    border-radius: 16px;
+  }
+  .card-image-wrapper {
+    height: 190px;
+  }
+  .card-content {
+    padding: 18px;
+  }
+  .card-title {
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+  }
+  .card-description {
+    font-size: 0.9rem;
+  }
+}
+
+/* Extra Small */
+@media (max-width: 360px) {
+  .page {
+    padding: 25px 12px;
+  }
+  .main-title {
+    font-size: 1.5rem;
+  }
+  .main-title::after {
+    width: 60px;
+  }
+  .tower-title {
+    font-size: 1.2rem;
+    padding-left: 36px;
+  }
+  .tower-title::before {
+    width: 24px;
+  }
+  .card-image-wrapper {
+    height: 170px;
+  }
+  .card-title {
+    font-size: 1.15rem;
+  }
+  .card-description {
+    font-size: 0.85rem;
   }
 }

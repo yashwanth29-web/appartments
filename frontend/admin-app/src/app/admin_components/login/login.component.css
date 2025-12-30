@@ -29,6 +29,7 @@ body {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),
               url('https://plus.unsplash.com/premium_photo-1661943864527-d714736dfd16?fm=jpg&q=80') center/cover no-repeat;
   position: relative;
+  overflow: hidden;
 }
 
 .overlay-content {
@@ -240,5 +241,248 @@ label {
   }
   .overlay-content h1 {
     font-size: 2rem;
+  }
+}
+
+/* ========================================
+   ADDITIONAL RESPONSIVE BREAKPOINTS
+======================================== */
+
+/* Tablet */
+@media (max-width: 992px) {
+  .background-side {
+    height: 35vh;
+  }
+  .overlay-content {
+    bottom: 25px;
+    left: 25px;
+    max-width: 400px;
+  }
+  .overlay-content h1 {
+    font-size: 2.3rem;
+    margin-bottom: 0.8rem;
+  }
+  .overlay-content p {
+    font-size: 1.2rem;
+  }
+  .login-card {
+    width: 400px;
+    padding: 35px;
+  }
+  .logo {
+    font-size: 1.4rem;
+    margin-bottom: 25px;
+  }
+  .logo svg {
+    width: 42px;
+    height: 42px;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  .subtitle {
+    margin-bottom: 35px;
+  }
+}
+
+/* Mobile Landscape */
+@media (max-width: 768px) {
+  .login-wrapper {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+  }
+  .background-side {
+    height: 30vh;
+    min-height: 200px;
+  }
+  .overlay-content {
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    max-width: none;
+  }
+  .overlay-content h1 {
+    font-size: 2rem;
+    margin-bottom: 0.6rem;
+  }
+  .overlay-content p {
+    font-size: 1.1rem;
+  }
+  .login-side {
+    flex: 1;
+    padding: 30px 20px;
+  }
+  .login-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 30px 25px;
+    border-radius: 16px;
+  }
+  .logo {
+    font-size: 1.3rem;
+    margin-bottom: 22px;
+    gap: 10px;
+  }
+  .logo svg {
+    width: 38px;
+    height: 38px;
+  }
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 6px;
+  }
+  .subtitle {
+    margin-bottom: 30px;
+  }
+  .form-group {
+    margin-bottom: 20px;
+  }
+  label {
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+  }
+  .input-wrapper input {
+    padding: 12px 12px 12px 44px;
+    font-size: 0.95rem;
+    border-radius: 10px;
+  }
+  .input-wrapper .icon {
+    left: 14px;
+    width: 18px;
+    height: 18px;
+  }
+  .toggle-password {
+    right: 14px;
+    width: 18px;
+    height: 18px;
+  }
+  .options {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 25px;
+    font-size: 0.9rem;
+  }
+  .login-btn {
+    padding: 14px;
+    font-size: 1rem;
+    border-radius: 10px;
+  }
+}
+
+/* Mobile Portrait */
+@media (max-width: 480px) {
+  .background-side {
+    height: 25vh;
+    min-height: 180px;
+  }
+  .overlay-content {
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+  }
+  .overlay-content h1 {
+    font-size: 1.7rem;
+    margin-bottom: 0.5rem;
+  }
+  .overlay-content p {
+    font-size: 1rem;
+  }
+  .login-side {
+    padding: 25px 15px;
+  }
+  .login-card {
+    padding: 25px 20px;
+    border-radius: 14px;
+  }
+  .logo {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    gap: 8px;
+  }
+  .logo svg {
+    width: 34px;
+    height: 34px;
+  }
+  h2 {
+    font-size: 1.6rem;
+  }
+  .subtitle {
+    margin-bottom: 25px;
+    font-size: 0.9rem;
+  }
+  .form-group {
+    margin-bottom: 18px;
+  }
+  label {
+    font-size: 0.9rem;
+  }
+  .input-wrapper input {
+    padding: 11px 11px 11px 40px;
+    font-size: 0.9rem;
+    border-radius: 9px;
+  }
+  .input-wrapper .icon {
+    left: 12px;
+    width: 16px;
+    height: 16px;
+  }
+  .toggle-password {
+    right: 12px;
+    width: 16px;
+    height: 16px;
+  }
+  .options {
+    gap: 10px;
+    margin-bottom: 22px;
+    font-size: 0.85rem;
+  }
+  .checkbox-label {
+    gap: 6px;
+  }
+  .login-btn {
+    padding: 13px;
+    font-size: 0.95rem;
+    border-radius: 9px;
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 360px) {
+  .background-side {
+    height: 22vh;
+    min-height: 160px;
+  }
+  .overlay-content h1 {
+    font-size: 1.5rem;
+  }
+  .overlay-content p {
+    font-size: 0.9rem;
+  }
+  .login-card {
+    padding: 22px 16px;
+  }
+  .logo {
+    font-size: 1.1rem;
+  }
+  .logo svg {
+    width: 30px;
+    height: 30px;
+  }
+  h2 {
+    font-size: 1.4rem;
+  }
+  .subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 22px;
+  }
+  .input-wrapper input {
+    padding: 10px 10px 10px 38px;
+    font-size: 0.85rem;
+  }
+  .login-btn {
+    padding: 12px;
+    font-size: 0.9rem;
   }
 }

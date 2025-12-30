@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 from app.config import Config
 from app.extensions import db, jwt, cors
 
@@ -25,11 +25,29 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
 
+    # Initialize extensions
     db.init_app(app)
     jwt.init_app(app)
-    cors.init_app(app, resources={r"/api/*": {"origins": "*"}}, supports_credentials=True)
+    
+    # CORS configuration - allow all origins for Cloud Run
+    cors.init_app(app, 
+        resources={r"/*": {"origins": "*"}}, 
+        supports_credentials=True,
+        allow_headers=["Content-Type", "Authorization", "X-Requested-With", "Accept"],
+        methods=["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"]
+    )
 
+    # Health check endpoint for Cloud Run (no auth required)
+    @app.route('/health')
+    def health_check():
+        return jsonify({"status": "healthy"}), 200
+    
+    # Root endpoint
+    @app.route('/')
+    def root():
+        return jsonify({"message": "Apartment Rental API", "status": "running"}), 200
 
+    # Register blueprints
     app.register_blueprint(auth_bp)
     app.register_blueprint(admin_bp)
     app.register_blueprint(tower_bp)
@@ -39,4 +57,11 @@ def create_app():
     app.register_blueprint(admin_booking_bp)
     app.register_blueprint(user_bp)
     app.register_blueprint(lease_bp)
+    
     return app
+
+
+def init_db(app):
+    """Initialize database tables - call this separately"""
+    with app.app_context():
+        db.create_all()

@@ -169,3 +169,177 @@ button:active {
     top: 30px;
   }
 }
+
+/* ========================================
+   ADDITIONAL RESPONSIVE BREAKPOINTS
+======================================== */
+
+/* Tablet */
+@media (max-width: 992px) {
+  .portal-title {
+    left: 40px;
+    font-size: 28px;
+    top: 35px;
+  }
+  .register-container {
+    max-width: 420px;
+  }
+  .form-wrapper {
+    padding: 50px 40px;
+    border-radius: 24px;
+  }
+  h2 {
+    font-size: 28px;
+    margin-bottom: 35px;
+  }
+  .input-group {
+    margin-bottom: 30px;
+  }
+  .input-group input {
+    padding: 16px 20px;
+    font-size: 16px;
+    border-radius: 16px;
+  }
+  .input-group label {
+    left: 20px;
+    font-size: 16px;
+  }
+  button {
+    padding: 16px;
+    font-size: 18px;
+    border-radius: 16px;
+  }
+}
+
+/* Mobile Landscape */
+@media (max-width: 768px) {
+  .portal-title {
+    left: 20px;
+    font-size: 24px;
+    top: 25px;
+  }
+  .register-container {
+    max-width: 400px;
+    padding: 0 15px;
+  }
+  .form-wrapper {
+    padding: 45px 35px;
+    border-radius: 22px;
+  }
+  h2 {
+    font-size: 26px;
+    margin-bottom: 30px;
+  }
+  .input-group {
+    margin-bottom: 28px;
+  }
+  .input-group input {
+    width: 100%;
+    padding: 15px 18px;
+    font-size: 15px;
+    border-radius: 14px;
+  }
+  .input-group label {
+    left: 18px;
+    font-size: 15px;
+  }
+  .input-group input:focus ~ label,
+  .input-group input:valid ~ label {
+    font-size: 13px;
+  }
+  button {
+    padding: 15px;
+    font-size: 17px;
+    border-radius: 14px;
+  }
+  .login-link {
+    margin-top: 28px;
+    font-size: 15px;
+  }
+}
+
+/* Mobile Portrait */
+@media (max-width: 480px) {
+  .portal-title {
+    left: 15px;
+    font-size: 22px;
+    top: 20px;
+  }
+  .register-container {
+    max-width: 100%;
+    padding: 0 12px;
+  }
+  .form-wrapper {
+    padding: 40px 25px;
+    border-radius: 18px;
+  }
+  h2 {
+    font-size: 24px;
+    margin-bottom: 28px;
+    letter-spacing: 0.5px;
+  }
+  .input-group {
+    margin-bottom: 25px;
+  }
+  .input-group input {
+    padding: 14px 16px;
+    font-size: 14px;
+    border-radius: 12px;
+    border-width: 1.5px;
+  }
+  .input-group label {
+    left: 16px;
+    font-size: 14px;
+  }
+  .input-group input:focus ~ label,
+  .input-group input:valid ~ label {
+    font-size: 12px;
+  }
+  button {
+    padding: 14px;
+    font-size: 16px;
+    border-radius: 12px;
+  }
+  .login-link {
+    margin-top: 25px;
+    font-size: 14px;
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 360px) {
+  .portal-title {
+    left: 12px;
+    font-size: 20px;
+    top: 15px;
+  }
+  .form-wrapper {
+    padding: 35px 20px;
+    border-radius: 16px;
+  }
+  h2 {
+    font-size: 22px;
+    margin-bottom: 24px;
+  }
+  .input-group {
+    margin-bottom: 22px;
+  }
+  .input-group input {
+    padding: 13px 14px;
+    font-size: 13px;
+    border-radius: 10px;
+  }
+  .input-group label {
+    left: 14px;
+    font-size: 13px;
+  }
+  button {
+    padding: 13px;
+    font-size: 15px;
+    border-radius: 10px;
+  }
+  .login-link {
+    margin-top: 22px;
+    font-size: 13px;
+  }
+}

@@ -51,7 +51,7 @@ def get_towers():
 def update_tower(id):
     user = User.query.get(int(get_jwt_identity()))
     if not user or user.role != "admin":
-        return jsonify({"message": "Admin only"}), 403
+        return jsonify({"message": "Admin only"}), 403 
 
     tower = Tower.query.get(id)
     if not tower:

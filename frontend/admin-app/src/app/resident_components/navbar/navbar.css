@@ -161,3 +161,131 @@
   .logo-monogram img { width: 50px; height: 50px; }
   .nav-links li { font-size: 1rem; }
 }
+
+/* ========================================
+   MOBILE HAMBURGER MENU
+======================================== */
+
+/* Mobile menu toggle button */
+.mobile-menu-toggle {
+  display: none;
+  background: rgba(255, 215, 0, 0.15);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+  color: #ffd700;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle:hover {
+  background: rgba(255, 215, 0, 0.25);
+}
+
+.mobile-menu-toggle svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Mobile responsive with hamburger */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 1.5rem;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  
+  .logo-container {
+    flex: 1;
+  }
+  
+  .mobile-menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .nav-links {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 215, 0, 0.2);
+  }
+  
+  .nav-links.mobile-open {
+    display: flex;
+  }
+  
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .nav-links li a {
+    display: block;
+    padding: 1rem;
+    border-radius: 10px;
+    transition: background 0.3s ease;
+  }
+  
+  .nav-links li a:hover {
+    background: rgba(255, 215, 0, 0.1);
+  }
+  
+  .nav-links li a::after {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.875rem 1rem;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+  }
+  
+  .logo-monogram img {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .logo-container {
+    gap: 0.75rem;
+  }
+  
+  .mobile-menu-toggle {
+    padding: 8px;
+  }
+  
+  .mobile-menu-toggle svg {
+    width: 22px;
+    height: 22px;
+  }
+  
+  .nav-links li a {
+    padding: 0.875rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .logo {
+    font-size: 1.3rem;
+  }
+  
+  .logo-monogram img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .nav-links li a {
+    padding: 0.75rem;
+    font-size: 0.95rem;
+  }
+}

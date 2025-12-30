@@ -5,6 +5,7 @@ from app.models.booking import Booking
 from app.models.user import User
 from app.models.lease import Lease
 from app.models.unit import Unit
+from datetime import datetime
 
 
 # ---------------- ADMIN BOOKINGS ----------------
@@ -22,8 +23,10 @@ def admin_get_bookings():
     for b in bookings:
         user = User.query.get(b.user_id)
         unit = Unit.query.get(b.unit_id)
-        lease = Lease.query.filter_by(user_id=b.user_id, unit_id=b.unit_id).order_by(Lease.start_date.desc()).first()
-        approved_date = lease.start_date.isoformat() if lease else None
+        
+        # Use the booking's approved_date directly
+        approved_date = b.approved_date.isoformat() if b.approved_date else None
+        
         result.append({
             "id": b.id,
             "user_id": b.user_id,
@@ -70,6 +73,7 @@ def admin_update_booking(booking_id):
             unit.status = "occupied"
         
         booking.status = status
+        booking.approved_date = datetime.utcnow()  # Set approved date
         db.session.commit()
         return jsonify({"message": "Booking approved and lease created"})
 

@@ -269,3 +269,136 @@
 }
 
 .tower-item { animation-delay: calc(0.1s * var(--index)); }
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+======================================== */
+
+/* Tablet */
+@media (max-width: 992px) {
+  .title {
+    font-size: 2.6rem;
+  }
+  .form-frame, .list-frame {
+    padding: 30px;
+    margin: 0 auto 40px;
+  }
+}
+
+/* Mobile Landscape */
+@media (max-width: 768px) {
+  .page-wrapper {
+    padding: 40px 15px;
+  }
+  .title {
+    font-size: 2.2rem;
+    margin-bottom: 35px;
+  }
+  .title::after {
+    width: 150px;
+  }
+  .form-frame, .list-frame {
+    padding: 25px 20px;
+    border-radius: 18px;
+    border-width: 4px;
+  }
+  .label {
+    font-size: 1.3rem;
+  }
+  .input-field {
+    padding: 14px;
+    font-size: 1rem;
+  }
+  .create-btn {
+    padding: 15px;
+    font-size: 1.2rem;
+  }
+  .subtitle {
+    font-size: 1.6rem;
+  }
+  .tower-item {
+    flex-direction: column;
+    gap: 15px;
+    padding: 18px 20px;
+    text-align: center;
+  }
+  .tower-info {
+    width: 100%;
+    justify-content: center;
+  }
+  .tower-actions {
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
+  }
+  .tower-name {
+    font-size: 1.2rem;
+    margin-left: 0;
+  }
+  .edit-form {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .edit-input {
+    text-align: center;
+  }
+  .btn {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Mobile Portrait */
+@media (max-width: 480px) {
+  .page-wrapper {
+    padding: 30px 10px;
+  }
+  .title {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+  .title::after {
+    width: 120px;
+    height: 3px;
+  }
+  .form-frame, .list-frame {
+    padding: 20px 15px;
+    border-radius: 14px;
+    margin-bottom: 30px;
+  }
+  .label {
+    font-size: 1.1rem;
+  }
+  .input-field {
+    padding: 12px;
+    font-size: 0.95rem;
+    border-width: 2px;
+  }
+  .create-btn {
+    padding: 14px;
+    font-size: 1.1rem;
+    margin-top: 20px;
+  }
+  .subtitle {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
+  .tower-item {
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+  }
+  .tower-name {
+    font-size: 1.1rem;
+  }
+  .tower-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .btn {
+    padding: 12px;
+    font-size: 0.85rem;
+  }
+}

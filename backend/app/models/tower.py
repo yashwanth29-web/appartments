@@ -7,3 +7,4 @@ class Tower(db.Model):
     name = db.Column(db.String(50), nullable=False)
 
     units = db.relationship("Unit", backref="tower", lazy=True)
+    

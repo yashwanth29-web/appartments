@@ -8,11 +8,24 @@
     <h2 class="logo">Resident Portal</h2>
   </div>
 
-  <ul class="nav-links">
-    <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
-    <li><a routerLink="/units" routerLinkActive="active">Units</a></li>
-    <li><a routerLink="/amenities" routerLinkActive="active">Amenities</a></li>
-    <li><a routerLink="/bookings" routerLinkActive="active">Bookings</a></li>
-    <li class="logout" (click)="logout()">Logout</li>
+  <!-- Mobile Menu Toggle -->
+  <button class="mobile-menu-toggle" (click)="toggleMobileMenu()" aria-label="Toggle menu">
+    <svg *ngIf="!mobileMenuOpen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+    <svg *ngIf="mobileMenuOpen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
+
+  <ul class="nav-links" [class.mobile-open]="mobileMenuOpen">
+    <li><a routerLink="/home" routerLinkActive="active" (click)="closeMobileMenu()">Home</a></li>
+    <li><a routerLink="/units" routerLinkActive="active" (click)="closeMobileMenu()">Units</a></li>
+    <li><a routerLink="/amenities" routerLinkActive="active" (click)="closeMobileMenu()">Amenities</a></li>
+    <li><a routerLink="/bookings" routerLinkActive="active" (click)="closeMobileMenu()">Bookings</a></li>
+    <li><a class="logout" (click)="logout()">Logout</a></li>
   </ul>
 </nav>

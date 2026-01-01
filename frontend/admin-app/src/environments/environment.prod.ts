@@ -1,6 +1,5 @@
 // Production environment settings
-// BACKEND_API_URL will be replaced during Docker build
 export const environment = {
   production: true,
-  apiUrl: 'BACKEND_API_URL'
+  apiUrl: 'http://16.171.176.201:5001/api'
 };
